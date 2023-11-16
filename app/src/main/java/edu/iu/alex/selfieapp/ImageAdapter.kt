@@ -18,6 +18,12 @@ import edu.iu.alex.selfieapp.R
 class ImageAdapter(private val context: Context, private var imageUrls: List<String> = listOf()) : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
 
+
+    /*
+    * Update url of downloaded images.
+    *
+    *
+     */
     fun setImageUrls(newUrls: List<String>) {
         imageUrls = newUrls
         notifyDataSetChanged()
@@ -27,6 +33,14 @@ class ImageAdapter(private val context: Context, private var imageUrls: List<Str
         val view = LayoutInflater.from(context).inflate(R.layout.image_item, parent, false)
         return ImageViewHolder(view)
     }
+
+    /*
+    * Glide loads the image_item's into the recycler view. When the items are clicked a dialog displaying
+    * the image appears.
+    *
+    * @param ImageViewHolder,position
+    *
+     */
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         val imageUrl = imageUrls[position]

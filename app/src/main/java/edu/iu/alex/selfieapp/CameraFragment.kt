@@ -79,9 +79,12 @@ class CameraFragment : Fragment() {
         closeCamera()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
+    /*
+    * Method used to capture the photo when called.
+    *
+    * @param ImageViewHolder,position
+    *
+     */
 
     private fun takePhoto() {
         Log.d(TAG, "takePhoto: Starting photo capture")
@@ -109,6 +112,12 @@ class CameraFragment : Fragment() {
         Log.d(TAG, "takePhoto: Photo capture completed")
     }
 
+    /*
+    * Called when necessary permission to access the camera is granted.
+    *
+    *
+    *
+     */
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
         cameraProviderFuture.addListener({
@@ -131,18 +140,22 @@ class CameraFragment : Fragment() {
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 
+    /*
+    * Called when app shuts down and navigates away from fragment.
+    *
+     */
     private fun closeCamera() {
         val cameraProvider: ProcessCameraProvider =
             ProcessCameraProvider.getInstance(requireContext()).get()
         cameraProvider.unbindAll()
     }
 
-    private fun getFileName(userId: String): String {
-        val timeStamp: String = SimpleDateFormat("yyyyMMddHHmmssSSS", Locale.getDefault()).format(
-            Date()
-        )
-        return "image_${userId}_$timeStamp.jpg"
-    }
+    /*
+    * Takes in a file and uploads the url to that file to Firebase Storage.
+    *
+    * @param file
+    *
+     */
 
     private fun uploadImageToFirebase(file: File) {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
@@ -170,6 +183,13 @@ class CameraFragment : Fragment() {
         findNavController().navigate(R.id.cameraFragment_to_mainFragment)
     }
 
+    /*
+    * Method returns a file to be stored on the local machine in the picture directory.
+    *
+    *
+    * @return file
+     */
+
     private fun createTempFile(): File {
         val timeStamp: String =
             SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(System.currentTimeMillis())
@@ -179,6 +199,11 @@ class CameraFragment : Fragment() {
         return File.createTempFile(timeStamp, ".jpg", storageDir)
     }
 
+
+    /*
+    * Asks user for permission to use the camera.
+    *
+     */
     private fun requestCameraPermission() {
         if (ContextCompat.checkSelfPermission(
                 requireContext(),

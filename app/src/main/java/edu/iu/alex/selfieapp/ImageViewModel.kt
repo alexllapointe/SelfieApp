@@ -28,11 +28,11 @@ class ImageViewModel : ViewModel() {
         }
     }
 
-    fun notifyImageSaved() {
-        Log.d("ImageViewModel", "Image has been saved")
-        _imageSaved.value = true
-        _imageSaved.value = false
-    }
+    /*
+    * Used to fetch the data for the logged in user. Called when updating the recycler view.
+    *
+    *
+     */
 
     fun fetchData() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
@@ -59,6 +59,13 @@ class ImageViewModel : ViewModel() {
             Log.e("ImageViewModel", "Error listing files", exception)
         }
     }
+
+    /*
+    * Clears the list of imageUrls. Used when a new user is signed in and the data from the previous
+    * user needs to be cleared.
+    *
+    *
+     */
     fun clearData() {
         _imageUrls.value = listOf()
     }

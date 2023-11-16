@@ -84,10 +84,23 @@ class MainFragment : Fragment(), SensorEventListener {
 
     }
 
+    /*
+    * Navigation using the nav graph to the login fragment.
+    *
+    *
+     */
     private fun navigateToLoginFragment() {
         val navController = findNavController()
         navController.navigate(R.id.mainFragment_to_loginFragment)
     }
+
+    /*
+    * If the currentUser is not signed in then the previous data from the previous user will be cleared.
+    * Otherwise it will be shown.
+    *
+    *
+    * @param SensorEvent
+     */
 
     override fun onStart() {
         super.onStart()
@@ -100,6 +113,11 @@ class MainFragment : Fragment(), SensorEventListener {
         }
     }
 
+    /*
+    * When screen is resumed, register the sensor listener.
+    *
+    *
+     */
     override fun onResume() {
         super.onResume()
         accelerometer?.let {
@@ -108,11 +126,25 @@ class MainFragment : Fragment(), SensorEventListener {
         viewModel.fetchData()
     }
 
+    /*
+    * Unregister the sensor listener when the screen is paused.
+    *
+    *
+     */
+
     override fun onPause() {
         super.onPause()
         sensorManager.unregisterListener(this)
     }
 
+    /*
+    * Monitor sensor event changes, if the speed of the camera moving
+    * horizontally is greater than that of the threshold,
+    * navigate to the camera fragment.
+    *
+    *
+    * @param SensorEvent
+     */
     override fun onSensorChanged(event: SensorEvent?) {
         val currentTime = System.currentTimeMillis()
         if ((currentTime - lastUpdate) > 100) {
