@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/mainFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="edu.iu.alex.selfieapp.LoginFragment"
+        android:label="login_fragment"
+        app:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="edu.iu.alex.selfieapp.RegisterFragment"
+        android:label="register_fragment"
+        app:layout="@layout/register_fragment">
+        <action
+            android:id="@+id/registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="edu.iu.alex.selfieapp.MainFragment"
+        android:label="main_fragment"
+        app:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/mainFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+        <action
+            android:id="@+id/mainFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="edu.iu.alex.selfieapp.CameraFragment"
+        android:label="camera_fragment"
+        app:layout="@layout/camera_fragment">
+        <action
+            android:id="@+id/cameraFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+
+
+</navigation>

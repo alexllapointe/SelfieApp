@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "321553417435",
+    "firebase_url": "https://selfieapp-feb5f-default-rtdb.firebaseio.com",
+    "project_id": "selfieapp-feb5f",
+    "storage_bucket": "selfieapp-feb5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321553417435:android:1efdcba2cc7c5f69d7f8fe",
+        "android_client_info": {
+          "package_name": "edu.iu.alex.selfieapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ9727BI12rapGTut-p-OeSWeE8rD5uFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
